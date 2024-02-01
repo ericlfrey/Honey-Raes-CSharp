@@ -21,7 +21,9 @@ export default function TicketsList() {
     deleteServiceTicket(id).then(() => getAllServiceTickets());
   };
 
-  const handleClick = () => {};
+  const handleComplete = id => {
+    console.log(id);
+  };
 
   return (
     <>
@@ -54,7 +56,7 @@ export default function TicketsList() {
               </td>
               <td>
                 {!t.dateCompleted && t.employeeId ? (
-                  <Link onClick={handleClick}>Complete</Link>
+                  <Link onClick={() => handleComplete(t.id)}>Complete</Link>
                 ) : (
                   ''
                 )}
