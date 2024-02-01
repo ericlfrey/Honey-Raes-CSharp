@@ -1,12 +1,34 @@
 const _apiUrl = "/api/servicetickets";
 
-export const getServiceTickets = () => {
-  return fetch(_apiUrl).then((r) => r.json());
-};
+export const getServiceTickets = () => new Promise((resolve, reject) => {
+  fetch(_apiUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
 
-export const getServiceTicket = (id) => {
-  return fetch(`${_apiUrl}/${id}`).then((r) => r.json());
-};
+export const getServiceTicket = (id) => new Promise((resolve, reject) => {
+  fetch(`${_apiUrl}/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
 
 export const createServiceTicket = (payload) => new Promise((resolve, reject) => {
   fetch(_apiUrl, {
@@ -18,5 +40,17 @@ export const createServiceTicket = (payload) => new Promise((resolve, reject) =>
   })
     .then((response) => response.json())
     .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export const deleteServiceTicket = (id) => new Promise((resolve, reject) => {
+  fetch(`${_apiUrl}/${id}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
     .catch(reject);
 });
