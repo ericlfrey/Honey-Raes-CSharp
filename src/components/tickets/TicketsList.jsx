@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Table } from 'reactstrap';
 import { getServiceTickets } from '../../data/serviceTicketsData';
 import { Link } from 'react-router-dom';
-import ServiceTickets from './ServiceTickets';
 
 export default function TicketsList() {
   const [tickets, setTickets] = useState([]);
@@ -13,7 +12,8 @@ export default function TicketsList() {
 
   return (
     <>
-      <ServiceTickets />
+      <h2>Service Tickets</h2>
+      <Link to="/tickets/create">Add</Link>
       <Table>
         <thead>
           <tr>

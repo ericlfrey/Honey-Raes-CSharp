@@ -10,27 +10,30 @@ export default function CustomersList() {
     getCustomers().then(setCustomers);
   }, []);
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Address</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {customers.map(c => (
-          <tr key={`customer-${c.id}`}>
-            <th scope="row">{c.id}</th>
-            <td>{c.name}</td>
-            <td>{c.address}</td>
-            <td>
-              <Link to={`${c.id}`}>Details</Link>
-            </td>
+    <>
+      <h2>Customers</h2>
+      <Table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th></th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {customers.map(c => (
+            <tr key={`customer-${c.id}`}>
+              <th scope="row">{c.id}</th>
+              <td>{c.name}</td>
+              <td>{c.address}</td>
+              <td>
+                <Link to={`${c.id}`}>Details</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 }
