@@ -4,15 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ServiceTickets from './components/tickets/ServiceTickets';
 import TicketsList from './components/tickets/TicketsList';
 import TicketDetails from './components/tickets/TicketDetails';
 import CreateTicket from './components/tickets/CreateTicket';
-import Customers from './components/customers/Customers';
 import CustomersList from './components/customers/CustomersList';
 import CustomerDetails from './components/customers/CustomerDetails';
 import CreateCustomer from './components/customers/CreateCustomer';
-import Employees from './components/employees/Employees';
 import EmployeesList from './components/employees/EmployeesList';
 import EmployeeDetails from './components/employees/EmployeeDetails';
 import CreateEmployee from './components/employees/CreateEmployee';
@@ -22,21 +19,15 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="tickets" element={<ServiceTickets />}>
-          <Route index element={<TicketsList />} />
-          <Route path=":id" element={<TicketDetails />} />
-          <Route path="create" element={<CreateTicket />} />
-        </Route>
-        <Route path="customers" element={<Customers />}>
-          <Route index element={<CustomersList />} />
-          <Route path=":id" element={<CustomerDetails />} />
-          <Route path="create" element={<CreateCustomer />} />
-        </Route>
-        <Route path="employees" element={<Employees />}>
-          <Route index element={<EmployeesList />} />
-          <Route path=":id" element={<EmployeeDetails />} />
-          <Route path="create" element={<CreateEmployee />} />
-        </Route>
+        <Route path="tickets" element={<TicketsList />} />
+        <Route path="tickets/:id" element={<TicketDetails />} />
+        <Route path="tickets/create" element={<CreateTicket />} />
+        <Route path="customers" element={<CustomersList />} />
+        <Route path="customers/:id" element={<CustomerDetails />} />
+        <Route path="customers/create" element={<CreateCustomer />} />
+        <Route path="employees" element={<EmployeesList />} />
+        <Route path="employees/:id" element={<EmployeeDetails />} />
+        <Route path="employees/create" element={<CreateEmployee />} />
       </Route>
     </Routes>
   </BrowserRouter>
