@@ -13,6 +13,7 @@ import CreateCustomer from './components/customers/CreateCustomer';
 import EmployeesList from './components/employees/EmployeesList';
 import EmployeeDetails from './components/employees/EmployeeDetails';
 import CreateEmployee from './components/employees/CreateEmployee';
+import AssignEmployee from './components/employees/AssignEmployee';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,6 +29,7 @@ root.render(
         <Route path="employees" element={<EmployeesList />} />
         <Route path="employees/:id" element={<EmployeeDetails />} />
         <Route path="employees/create" element={<CreateEmployee />} />
+        <Route path="employees/assign" element={<AssignEmployee />} />
       </Route>
     </Routes>
   </BrowserRouter>
