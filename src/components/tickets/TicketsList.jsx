@@ -21,6 +21,8 @@ export default function TicketsList() {
     deleteServiceTicket(id).then(() => getAllServiceTickets());
   };
 
+  const handleClick = () => {};
+
   return (
     <>
       <h2>Service Tickets</h2>
@@ -32,6 +34,7 @@ export default function TicketsList() {
             <th>Description</th>
             <th>Emergency?</th>
             <th>Date Completed</th>
+            <th></th>
             <th></th>
             <th></th>
           </tr>
@@ -48,6 +51,13 @@ export default function TicketsList() {
               </td>
               <td>
                 <Link onClick={() => handleDelete(t.id)}>Delete</Link>
+              </td>
+              <td>
+                {!t.dateCompleted && t.employeeId ? (
+                  <Link onClick={handleClick}>Complete</Link>
+                ) : (
+                  ''
+                )}
               </td>
             </tr>
           ))}
