@@ -22,21 +22,15 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="tickets" element={<ServiceTickets />}>
-          <Route index element={<TicketsList />} />
-          <Route path=":id" element={<TicketDetails />} />
-          <Route path="create" element={<CreateTicket />} />
-        </Route>
-        <Route path="customers" element={<Customers />}>
-          <Route index element={<CustomersList />} />
-          <Route path=":id" element={<CustomerDetails />} />
-          <Route path="create" element={<CreateCustomer />} />
-        </Route>
-        <Route path="employees" element={<Employees />}>
-          <Route index element={<EmployeesList />} />
-          <Route path=":id" element={<EmployeeDetails />} />
-          <Route path="create" element={<CreateEmployee />} />
-        </Route>
+        <Route path="tickets" element={<TicketsList />} />
+        <Route path="tickets/:id" element={<TicketDetails />} />
+        <Route path="tickets/create" element={<CreateTicket />} />
+        <Route path="customers" element={<CustomersList />} />
+        <Route path="customers/:id" element={<CustomerDetails />} />
+        <Route path="customers/create" element={<CreateCustomer />} />
+        <Route path="employees" element={<EmployeesList />} />
+        <Route path="employees/:id" element={<EmployeeDetails />} />
+        <Route path="employees/create" element={<CreateEmployee />} />
       </Route>
     </Routes>
   </BrowserRouter>
