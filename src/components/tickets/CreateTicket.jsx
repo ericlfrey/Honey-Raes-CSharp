@@ -29,7 +29,6 @@ export default function CreateTicket() {
       customerId: Number(formInput.customerId),
     };
     createServiceTicket(payload).then(() => navigate('/tickets'));
-    console.log(payload);
   };
 
   return (

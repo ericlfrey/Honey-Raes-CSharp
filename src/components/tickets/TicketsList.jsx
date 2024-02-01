@@ -1,14 +1,25 @@
 import { useEffect, useState } from 'react';
 import { Table } from 'reactstrap';
-import { getServiceTickets } from '../../data/serviceTicketsData';
+import {
+  deleteServiceTicket,
+  getServiceTickets,
+} from '../../data/serviceTicketsData';
 import { Link } from 'react-router-dom';
 
 export default function TicketsList() {
   const [tickets, setTickets] = useState([]);
 
-  useEffect(() => {
+  const getAllServiceTickets = () => {
     getServiceTickets().then(setTickets);
+  };
+
+  useEffect(() => {
+    getAllServiceTickets();
   }, []);
+
+  const handleDelete = id => {
+    deleteServiceTicket(id).then(() => getAllServiceTickets());
+  };
 
   return (
     <>
@@ -22,6 +33,7 @@ export default function TicketsList() {
             <th>Emergency?</th>
             <th>Date Completed</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +45,9 @@ export default function TicketsList() {
               <td>{t.dateCompleted?.split('T')[0] || 'Incomplete'}</td>
               <td>
                 <Link to={`${t.id}`}>Details</Link>
+              </td>
+              <td>
+                <Link onClick={() => handleDelete(t.id)}>Delete</Link>
               </td>
             </tr>
           ))}
