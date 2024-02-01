@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Table } from 'reactstrap';
 import {
+  completeServiceTicket,
   deleteServiceTicket,
   getServiceTickets,
 } from '../../data/serviceTicketsData';
@@ -21,6 +22,10 @@ export default function TicketsList() {
     deleteServiceTicket(id).then(() => getAllServiceTickets());
   };
 
+  const handleComplete = id => {
+    completeServiceTicket(id).then(() => getAllServiceTickets());
+  };
+
   return (
     <>
       <h2>Service Tickets</h2>
@@ -34,6 +39,7 @@ export default function TicketsList() {
             <th>Date Completed</th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -42,12 +48,23 @@ export default function TicketsList() {
               <th scope="row">{t.id}</th>
               <td>{t.description}</td>
               <td>{t.emergency ? 'yes' : 'no'}</td>
-              <td>{t.dateCompleted?.split('T')[0] || 'Incomplete'}</td>
+              <td>
+                {t.dateCompleted
+                  ? new Date(t.dateCompleted).toLocaleDateString()
+                  : 'Incomplete'}
+              </td>
               <td>
                 <Link to={`${t.id}`}>Details</Link>
               </td>
               <td>
                 <Link onClick={() => handleDelete(t.id)}>Delete</Link>
+              </td>
+              <td>
+                {!t.dateCompleted && t.employeeId ? (
+                  <Link onClick={() => handleComplete(t.id)}>Complete</Link>
+                ) : (
+                  ''
+                )}
               </td>
             </tr>
           ))}
