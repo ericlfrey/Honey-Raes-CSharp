@@ -6,9 +6,17 @@ import { Link } from 'react-router-dom';
 export default function TicketsList() {
   const [tickets, setTickets] = useState([]);
 
-  useEffect(() => {
+  const getAllServiceTickets = () => {
     getServiceTickets().then(setTickets);
+  };
+
+  useEffect(() => {
+    getAllServiceTickets();
   }, []);
+
+  const handleDelete = id => {
+    console.log('DELETE', id);
+  };
 
   return (
     <>
@@ -22,6 +30,7 @@ export default function TicketsList() {
             <th>Emergency?</th>
             <th>Date Completed</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +42,9 @@ export default function TicketsList() {
               <td>{t.dateCompleted?.split('T')[0] || 'Incomplete'}</td>
               <td>
                 <Link to={`${t.id}`}>Details</Link>
+              </td>
+              <td>
+                <Link onClick={() => handleDelete(t.id)}>Delete</Link>
               </td>
             </tr>
           ))}
