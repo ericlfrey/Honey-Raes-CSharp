@@ -50,7 +50,12 @@ export const deleteServiceTicket = (id) => new Promise((resolve, reject) => {
       'Content-Type': 'application/json',
     },
   })
-    .then((response) => response.json())
-    .then((data) => resolve((data)))
+    .then((response) => {
+      if (response.ok) {
+        resolve();
+      } else {
+        reject(`Failed to delete service ticket. Status: ${response.status}`);
+      }
+    })
     .catch(reject);
 });
