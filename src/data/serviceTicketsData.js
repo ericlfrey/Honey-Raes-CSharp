@@ -44,7 +44,7 @@ export const createServiceTicket = (payload) => new Promise((resolve, reject) =>
 });
 
 export const deleteServiceTicket = (id) => new Promise((resolve, reject) => {
-  fetch(`${_apiUrl}/${id}.json`, {
+  fetch(`${_apiUrl}/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
