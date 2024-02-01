@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Table } from 'reactstrap';
 import {
+  completeServiceTicket,
   deleteServiceTicket,
   getServiceTickets,
 } from '../../data/serviceTicketsData';
@@ -22,7 +23,7 @@ export default function TicketsList() {
   };
 
   const handleComplete = id => {
-    console.log(id);
+    completeServiceTicket(id).then(() => getAllServiceTickets());
   };
 
   return (
