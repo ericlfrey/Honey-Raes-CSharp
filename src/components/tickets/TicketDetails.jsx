@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Table } from 'reactstrap';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Button, Table } from 'reactstrap';
 import { getServiceTicket } from '../../data/serviceTicketsData';
 
 export default function TicketDetails() {
-  const { id } = useParams();
-
   const [ticket, setTicket] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getServiceTicket(id).then(t => setTicket(t));
@@ -35,7 +35,18 @@ export default function TicketDetails() {
           </tr>
           <tr>
             <th scope="row">Employee</th>
-            <td>{ticket.employee?.name || 'Unassigned'}</td>
+            <td>
+              {ticket.employee?.name || (
+                <Button
+                  className="btn-sm"
+                  onClick={() => {
+                    navigate('/employees/assign', { relative: 'path' });
+                  }}
+                >
+                  Assign
+                </Button>
+              )}
+            </td>
           </tr>
           <tr>
             <th scope="row">Completed?</th>
