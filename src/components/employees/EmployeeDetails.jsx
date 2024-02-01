@@ -18,6 +18,7 @@ export default function EmployeeDetails() {
 
   return (
     <>
+      <h2>{employee.name}</h2>
       <Table>
         <tbody>
           <tr>

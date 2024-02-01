@@ -18,6 +18,7 @@ export default function CustomerDetails() {
 
   return (
     <>
+      <h2>{customer.name}</h2>
       <Table>
         <tbody>
           <tr>
