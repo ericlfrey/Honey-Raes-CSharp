@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Table } from 'reactstrap';
-import { getServiceTickets } from '../../data/serviceTicketsData';
+import {
+  deleteServiceTicket,
+  getServiceTickets,
+} from '../../data/serviceTicketsData';
 import { Link } from 'react-router-dom';
 
 export default function TicketsList() {
@@ -15,7 +18,7 @@ export default function TicketsList() {
   }, []);
 
   const handleDelete = id => {
-    console.log('DELETE', id);
+    deleteServiceTicket(id).then(() => getAllServiceTickets());
   };
 
   return (
