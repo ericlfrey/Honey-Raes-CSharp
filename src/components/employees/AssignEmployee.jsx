@@ -38,7 +38,7 @@ export default function AssignEmployee() {
       dateCompleted,
       employeeId: Number(formInput.employeeId),
     };
-    updateServiceTicket(payload).then(() => navigate('/tickets'));
+    updateServiceTicket(payload).then(() => navigate(`/tickets/${id}`));
   };
 
   return (
