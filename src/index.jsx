@@ -23,13 +23,13 @@ root.render(
         <Route path="tickets" element={<TicketsList />} />
         <Route path="tickets/:id" element={<TicketDetails />} />
         <Route path="tickets/create" element={<CreateTicket />} />
+        <Route path="tickets/:id/assign" element={<AssignEmployee />} />
         <Route path="customers" element={<CustomersList />} />
         <Route path="customers/:id" element={<CustomerDetails />} />
         <Route path="customers/create" element={<CreateCustomer />} />
         <Route path="employees" element={<EmployeesList />} />
         <Route path="employees/:id" element={<EmployeeDetails />} />
         <Route path="employees/create" element={<CreateEmployee />} />
-        <Route path="employees/assign" element={<AssignEmployee />} />
       </Route>
     </Routes>
   </BrowserRouter>
