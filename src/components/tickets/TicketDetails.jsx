@@ -40,7 +40,7 @@ export default function TicketDetails() {
                 <Button
                   className="btn-sm"
                   onClick={() => {
-                    navigate('/employees/assign', { relative: 'path' });
+                    navigate(`/tickets/${ticket.id}/assign`);
                   }}
                 >
                   Assign
