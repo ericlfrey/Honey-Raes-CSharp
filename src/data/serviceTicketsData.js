@@ -43,6 +43,19 @@ export const createServiceTicket = (payload) => new Promise((resolve, reject) =>
     .catch(reject);
 });
 
+export const updateServiceTicket = (payload) => new Promise((resolve, reject) => {
+  fetch(`${_apiUrl}/${payload.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
 export const deleteServiceTicket = (id) => new Promise((resolve, reject) => {
   fetch(`${_apiUrl}/${id}`, {
     method: 'DELETE',

@@ -1,3 +1,4 @@
-.ticket-form>* {
+.ticket-form>*,
+.assign-employee-form>* {
   margin-top: 1rem;
 }
